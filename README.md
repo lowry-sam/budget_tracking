@@ -1,4 +1,4 @@
-# budget_tracking
+# A budget tracking program, written in Java.
 
 # To run program:
 ## $ make
