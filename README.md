@@ -1,11 +1,11 @@
 # budget_tracking
 
-# Hey hi :))
-
 # To run program:
-# $ make
+## $ make
 
 # To cleanup:
-# $ make cleanup
+## $ make cleanup
 # To cleanup data files:
-# $ make cleanupfiles
+## $ make cleanupfiles
+
+### Written by Sam Lowry, 2022
