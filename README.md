@@ -17,8 +17,8 @@ A budget tracking program, utilized via a termiminal.
     <img src="images/file setup.gif" width="400px" hspace="15px"/>
     <img src="images/earning.gif" width="400px" hspace="15px"/>
     <img src="images/printing.gif" width="800px" hspace="15px"/>
-    <img src="images/file.png" width="550px" />
-    <img src="images/pages.png" width="450px"/>
+    <img src="images/file.png" width="500px" />
+    <img src="images/pages.png" width="400px"/>
 </p>
 
 *Written by Sam Lowry, 2022*
