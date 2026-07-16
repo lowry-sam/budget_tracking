@@ -3,29 +3,12 @@ public class textoptions {
     public textoptions() {}
 
     public void greetings() {
-        //System.out.println("Welcome to the budget tracking program!");
+        System.out.println("Welcome to the budget tracking program!");
         //p("*******************************************************************************************");
         //p("*                                                                                         *");
-        //System.out.print("*                         ");
-        run.p("\n\n");
-        System.out.println("░██╗░░░░░░░██╗███████╗██╗░░░░░░█████╗░░█████╗░███╗░░░███╗███████╗  ████████╗░█████╗░  ████████╗██╗░░██╗███████╗");
-        System.out.println("░██║░░██╗░░██║██╔════╝██║░░░░░██╔══██╗██╔══██╗████╗░████║██╔════╝  ╚══██╔══╝██╔══██╗  ╚══██╔══╝██║░░██║██╔════╝");
-        System.out.println("░╚██╗████╗██╔╝█████╗░░██║░░░░░██║░░╚═╝██║░░██║██╔████╔██║█████╗░░  ░░░██║░░░██║░░██║  ░░░██║░░░███████║█████╗░░");
-        System.out.println("░░████╔═████║░██╔══╝░░██║░░░░░██║░░██╗██║░░██║██║╚██╔╝██║██╔══╝░░  ░░░██║░░░██║░░██║  ░░░██║░░░██╔══██║██╔══╝░░");
-        System.out.println("░░╚██╔╝░╚██╔╝░███████╗███████╗╚█████╔╝╚█████╔╝██║░╚═╝░██║███████╗  ░░░██║░░░╚█████╔╝  ░░░██║░░░██║░░██║███████╗");
-        System.out.println("░░░╚═╝░░░╚═╝░░╚══════╝╚══════╝░╚════╝░░╚════╝░╚═╝░░░░░╚═╝╚══════╝  ░░░╚═╝░░░░╚════╝░  ░░░╚═╝░░░╚═╝░░╚═╝╚══════╝");
-        System.out.println("██████╗░██╗░░░██╗██████╗░░██████╗░███████╗████████╗  ████████╗██████╗░░█████╗░░█████╗░██╗░░██╗██╗███╗░░██╗░██████╗░");
-        System.out.println("██╔══██╗██║░░░██║██╔══██╗██╔════╝░██╔════╝╚══██╔══╝  ╚══██╔══╝██╔══██╗██╔══██╗██╔══██╗██║░██╔╝██║████╗░██║██╔════╝░");
-        System.out.println("██████╦╝██║░░░██║██║░░██║██║░░██╗░█████╗░░░░░██║░░░  ░░░██║░░░██████╔╝███████║██║░░╚═╝█████═╝░██║██╔██╗██║██║░░██╗░");
-        System.out.println("██╔══██╗██║░░░██║██║░░██║██║░░╚██╗██╔══╝░░░░░██║░░░  ░░░██║░░░██╔══██╗██╔══██║██║░░██╗██╔═██╗░██║██║╚████║██║░░╚██╗");
-        System.out.println("██████╦╝╚██████╔╝██████╔╝╚██████╔╝███████╗░░░██║░░░  ░░░██║░░░██║░░██║██║░░██║╚█████╔╝██║░╚██╗██║██║░╚███║╚██████╔╝");
-        System.out.println("╚═════╝░░╚═════╝░╚═════╝░░╚═════╝░╚══════╝░░░╚═╝░░░  ░░░╚═╝░░░╚═╝░░╚═╝╚═╝░░╚═╝░╚════╝░╚═╝░░╚═╝╚═╝╚═╝░░╚══╝░╚═════╝░");
-        System.out.println("██████╗░██████╗░░█████╗░░██████╗░██████╗░░█████╗░███╗░░░███╗");
-        System.out.println("██╔══██╗██╔══██╗██╔══██╗██╔════╝░██╔══██╗██╔══██╗████╗░████║");
-        System.out.println("██████╔╝██████╔╝██║░░██║██║░░██╗░██████╔╝███████║██╔████╔██║");
-        System.out.println("██╔═══╝░██╔══██╗██║░░██║██║░░╚██╗██╔══██╗██╔══██║██║╚██╔╝██║");
-        System.out.println("██║░░░░░██║░░██║╚█████╔╝╚██████╔╝██║░░██║██║░░██║██║░╚═╝░██║");
-        System.out.println("╚═╝░░░░░╚═╝░░╚═╝░╚════╝░░╚═════╝░╚═╝░░╚═╝╚═╝░░╚═╝╚═╝░░░░░╚═╝");
+        
+        //run.p("\n\n");
+        
         //System.out.print("                         *");
         //p("*                                                                                         *");
         //p("*******************************************************************************************");
@@ -33,6 +16,7 @@ public class textoptions {
     }
 
     public void foodChoice() {
+        p("");
         clear();
         run.pb("What kind of food purchase?");
         p("1. Eat Out");
@@ -41,6 +25,7 @@ public class textoptions {
     }
 
     public void printLoop() {
+        p("");
         run.pb("What would you like to do? (Page 1/2)");
         p("1. Print entries");
         p("2. Check stats");
@@ -54,6 +39,7 @@ public class textoptions {
     }
 
     public void printLoop2() {
+        p("");
         run.pb("What would you like to do? (Page 2/2)");
         p("1. Print Categories");
         p("2. Add/Remove Category");
@@ -67,6 +53,7 @@ public class textoptions {
     
 
     public void firstChoice() {
+        p("");
         run.pb("\nHow would you like to print?");
         p("1. Print by date");
         p("2. Print by amount");
@@ -78,6 +65,7 @@ public class textoptions {
 
     public void dateChoice() {
         clear();
+        p("");
         run.pb("How would you like to sort?");
         p("1. Spendings -> Sort by oldest to newest");
         p("2. Spendings -> Sort by newest to oldest");
@@ -88,6 +76,7 @@ public class textoptions {
 
     public void amountChoice() {
         clear();
+        p("");
         run.pb("How would you like to sort?");
         p("1. Spendings -> Sort by low to high");
         p("2. Spendings -> Sort by high to low");
@@ -97,6 +86,7 @@ public class textoptions {
     }
 
     public void whatTypeOfEntry() {
+        p("");
         run.pb("\nWhat Type of Spending is it?");
         p("1. Food");
         p("2. Gas");
@@ -114,6 +104,7 @@ public class textoptions {
     }
 
     public void whatTypeOfEarning() {
+        p("");
         run.pb("\nWhat Type of Earning is it?");
         p("1. Vicars");
         p("2. Publix");
@@ -127,6 +118,7 @@ public class textoptions {
     }
 
     public void monthChoice() {
+        p("");
         run.pi("Select the correct month:");
         p("1. January");
         p("2. February");
@@ -143,6 +135,7 @@ public class textoptions {
     }
 
     public String numberToMonth(int aInt) {
+        p("");
         String ret = "";
 
         if (aInt == 1) 
