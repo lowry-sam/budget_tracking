@@ -1,5 +1,5 @@
 # budget_tracking
-A budget tracking program, utilized via a termiminal.
+A budget tracking program, utilized via a terminal.
 
 *Created in Java*
 
