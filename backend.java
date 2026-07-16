@@ -4,6 +4,9 @@ import java.io.*;
 //import java.util.*;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 public class backend {
     //Various things needed
     public entryArray spendings;
@@ -14,7 +17,9 @@ public class backend {
     private static Scanner k;
     private static textoptions textoptions = new textoptions();
     private static String FILE = "";
-    private static String FILEPATH = "/Users/lmao/Desktop/Coding Projects/Budget Tracking/budget_tracking/files/";
+    private static String FILEPATH = "F:/Programming_Projects/budget_tracking/files/";
+    //private static String FILEPATH = new File("").getAbsolutePath();
+    
     private static final String DELIM = "\t";
     private static final String SEPERATOR = "/";
 
@@ -22,9 +27,12 @@ public class backend {
     public backend() { init(); }//Initialize the backend of program 
 
     public void init() { //Initialize array
+        //System.out.println(FILEPATH);
         spendings = new entryArray();
         earnings = new earningArray();
         k = new Scanner(System.in);
+        
+        //Path path = Paths
     }
 
     public entryArray getSpendings() {
@@ -84,6 +92,7 @@ public class backend {
     public void setStartFile(date a, date old) { //Edit start date on file
         ArrayList<String> copy = new ArrayList<String>();
         try { //Read in file
+            //System.out.println(FILE);
             Scanner fileReader = new Scanner(new File(FILE));
             while (fileReader.hasNextLine()) {
                 String line = fileReader.nextLine();
@@ -505,24 +514,24 @@ public class backend {
                         k.nextLine();
                         String fileName = k.nextLine();
                         if (fileName.equalsIgnoreCase("")) 
-                            FILE = "budget_tracking.txt";
+                            FILE = FILEPATH + "budget_tracking.txt";
                         else {
                             if (fileName.charAt(fileName.length()-4) == '.' && 
                             fileName.charAt(fileName.length()-3) == 't' &&
                             fileName.charAt(fileName.length()-2) == 'x' &&
                             fileName.charAt(fileName.length()-1) == 't') 
-                                FILE = fileName;
+                                FILE = FILEPATH + fileName;
                             else    
                                 FILE = fileName + ".txt";
                         }
                         done = true;
                     }
                 } else {
-                    FILE = files[choice-1];
+                    FILE = FILEPATH + files[choice-1];
                 }
             } else {
-                FILE = "budget_tracking.txt";
-                run.p("Setting up new file...");
+                FILE = FILEPATH + "budget_tracking.txt";
+                run.p("Setting up first file...");
                 setUpFile();
             }
         }
@@ -550,7 +559,8 @@ public class backend {
         
         try { //Reading in file
             //File f = new File("/Users/lmao/Desktop/Coding Projects/Budget Tracking/budget_tracking/files");
-            Scanner fileScanner = new Scanner(new File(FILEPATH + FILE));
+            System.out.println(FILE);
+            Scanner fileScanner = new Scanner(new File(FILE));
             //PrintStream print = new File(FILE).list();
             if (fileScanner.hasNextLine()) {
                 boolean tampered = false;
@@ -886,7 +896,7 @@ public class backend {
         startingDate = null;
         endingDate = null;
         try {
-            PrintWriter fileWriter = new PrintWriter(new FileOutputStream(FILEPATH + FILE));
+            PrintWriter fileWriter = new PrintWriter(new FileOutputStream(FILE));
             fileWriter.write("budgettrackingprogram\n");
             fileWriter.write("\n");
             fileWriter.write("Starting Date:\t");
@@ -907,7 +917,7 @@ public class backend {
     public void saveFile() { //"Saving" file
         ArrayList<String> copy = new ArrayList<String>();
         try {
-            Scanner fileReader = new Scanner(new File(FILEPATH + FILE));
+            Scanner fileReader = new Scanner(new File(FILE));
             for (int i = 0; fileReader.hasNextLine(); i++) {
                 String line = fileReader.nextLine();
                 copy.add(line);
@@ -919,7 +929,7 @@ public class backend {
         }
 
         try {
-            BufferedWriter fileWriter = new BufferedWriter(new FileWriter(FILEPATH + FILE));
+            BufferedWriter fileWriter = new BufferedWriter(new FileWriter(FILE));
             for(int i = 0; i < copy.size(); i++) {
                 fileWriter.write(copy.get(i) + "\n");
             }
@@ -932,7 +942,7 @@ public class backend {
     public void saveToNewFile(String fileName) {
         ArrayList<String> copy = new ArrayList<String>();
         try {
-            Scanner fileReader = new Scanner(new File(FILEPATH + FILE));
+            Scanner fileReader = new Scanner(new File(FILE));
             while(fileReader.hasNextLine()) {
                 String line = fileReader.nextLine();
                 copy.add(line);
@@ -943,7 +953,7 @@ public class backend {
         }
 
         try {
-            BufferedWriter fileWriter = new BufferedWriter( new FileWriter(FILEPATH + fileName));
+            BufferedWriter fileWriter = new BufferedWriter( new FileWriter(fileName));
             for(int i = 0; i < copy.size(); i++) {
                 fileWriter.write(copy.get(i) + "\n");
             }
@@ -961,7 +971,7 @@ public class backend {
     public void printFile() { //Print out file
         ArrayList<String> print = new ArrayList<String>();
         try {
-            Scanner t = new Scanner(new File(FILEPATH + FILE));
+            Scanner t = new Scanner(new File(FILE));
             while (t.hasNextLine()) {
                 String line = t.nextLine();
                 print.add(line);
@@ -986,7 +996,7 @@ public class backend {
         spendings.addEntry(name, amount, date);
         ArrayList<String> copy = new ArrayList<String>();
         try { //Read in file
-            Scanner fileReader = new Scanner(new File(FILEPATH+FILE));
+            Scanner fileReader = new Scanner(new File(FILE));
             while (fileReader.hasNextLine()) {
                 String line = fileReader.nextLine();
                 if (line.equalsIgnoreCase("Entries:")) {
@@ -1008,7 +1018,7 @@ public class backend {
         }
 
         try { //Write to file
-            BufferedWriter fileWriter = new BufferedWriter( new FileWriter(FILEPATH+FILE));
+            BufferedWriter fileWriter = new BufferedWriter( new FileWriter(FILE));
             for(int i =0; i < copy.size(); i++) {
                 fileWriter.write(copy.get(i) + "\n");
             }
@@ -1026,7 +1036,7 @@ public class backend {
         earnings.addEntry(name, amount, date);
         ArrayList<String> copy = new ArrayList<String>();
         try { //Read in file
-            Scanner fileReader = new Scanner(new File(FILEPATH+FILE));
+            Scanner fileReader = new Scanner(new File(FILE));
             while (fileReader.hasNextLine()) {
                 String line = fileReader.nextLine();
                 if (line.equalsIgnoreCase("Earnings:")) {
@@ -1048,7 +1058,7 @@ public class backend {
         }
 
         try { //Write to file
-            BufferedWriter fileWriter = new BufferedWriter( new FileWriter(FILEPATH+FILE));
+            BufferedWriter fileWriter = new BufferedWriter( new FileWriter(FILE));
             for(int i =0; i < copy.size(); i++) {
                 fileWriter.write(copy.get(i) + "\n");
             }
@@ -1066,7 +1076,7 @@ public class backend {
         spendings.removeEntry(name, amount, date);
         ArrayList<String> copy = new ArrayList<String>();
         try {
-            Scanner fileReader = new Scanner(new File(FILEPATH+FILE));
+            Scanner fileReader = new Scanner(new File(FILE));
             for (int i = 0; fileReader.hasNextLine(); i++) {
                 String line = fileReader.nextLine();
                 if (!line.equalsIgnoreCase(name + "\t" + amount + "\t" + date.print())) 
@@ -1078,7 +1088,7 @@ public class backend {
         }
 
         try {
-            BufferedWriter fileWriter = new BufferedWriter(new FileWriter(FILEPATH+FILE));
+            BufferedWriter fileWriter = new BufferedWriter(new FileWriter(FILE));
             for(int i =0; i < copy.size(); i++) {
                 fileWriter.write(copy.get(i) + "\n");
             }
@@ -1094,7 +1104,7 @@ public class backend {
         //IO Stuff;
         ArrayList<String> copy = new ArrayList<String>();
         try {
-            Scanner fileReader = new Scanner(new File(FILEPATH+FILE));
+            Scanner fileReader = new Scanner(new File(FILE));
             for (int i = 0; fileReader.hasNextLine(); i++) {
                 String line = fileReader.nextLine();
                 if (!line.equalsIgnoreCase("Entries:")) 
@@ -1114,7 +1124,7 @@ public class backend {
         }
 
         try {
-            BufferedWriter fileWriter = new BufferedWriter(new FileWriter(FILEPATH+FILE));
+            BufferedWriter fileWriter = new BufferedWriter(new FileWriter(FILE));
             for(int i =0; i < copy.size(); i++) {
                 fileWriter.write(copy.get(i) + "\n");
             }
@@ -1130,7 +1140,7 @@ public class backend {
         earnings.removeEntry(name, amount, date);
         ArrayList<String> copy = new ArrayList<String>();
         try {
-            Scanner fileReader = new Scanner(new File(FILEPATH+FILE));
+            Scanner fileReader = new Scanner(new File(FILE));
             for (int i = 0; fileReader.hasNextLine(); i++) {
                 String line = fileReader.nextLine();
                 if (!line.equalsIgnoreCase(name + "\t" + amount + "\t" + date.print())) 
@@ -1142,7 +1152,7 @@ public class backend {
         }
 
         try {
-            BufferedWriter fileWriter = new BufferedWriter(new FileWriter(FILEPATH+FILE));
+            BufferedWriter fileWriter = new BufferedWriter(new FileWriter(FILE));
             for(int i =0; i < copy.size(); i++) {
                 fileWriter.write(copy.get(i) + "\n");
             }
@@ -1158,7 +1168,7 @@ public class backend {
         //File IO Stuff;
         ArrayList<String> copy = new ArrayList<String>();
         try {
-            Scanner fileReader = new Scanner(new File(FILEPATH+FILE));
+            Scanner fileReader = new Scanner(new File(FILE));
             for (int i = 0; fileReader.hasNextLine(); i++) {
                 String line = fileReader.nextLine();
                 if (!line.equalsIgnoreCase("Earnings:")) 
@@ -1178,7 +1188,7 @@ public class backend {
         }
 
         try {
-            BufferedWriter fileWriter = new BufferedWriter(new FileWriter(FILEPATH+FILE));
+            BufferedWriter fileWriter = new BufferedWriter(new FileWriter(FILE));
             for(int i =0; i < copy.size(); i++) {
                 fileWriter.write(copy.get(i) + "\n");
             }
@@ -1268,7 +1278,7 @@ public class backend {
         spendings.removeCategory(aCategory);
         ArrayList<String> copy = new ArrayList<String>();
         try {
-            Scanner fileReader = new Scanner(new File(FILEPATH+FILE));
+            Scanner fileReader = new Scanner(new File(FILE));
             while(fileReader.hasNextLine()) {
                 String line = fileReader.nextLine();
                 if (!line.equalsIgnoreCase("Spending Categories:")) 
@@ -1287,7 +1297,7 @@ public class backend {
         }
 
         try {
-            BufferedWriter fileWriter = new BufferedWriter(new FileWriter(FILEPATH+FILE));
+            BufferedWriter fileWriter = new BufferedWriter(new FileWriter(FILE));
             for(int i =0; i < copy.size(); i++) {
                 fileWriter.write(copy.get(i) + "\n");
             }
@@ -1367,7 +1377,7 @@ public class backend {
         //Add file I/O stuff
         ArrayList<String> copy = new ArrayList<String>();
         try {
-            Scanner fileReader = new Scanner(new File(FILEPATH+FILE));
+            Scanner fileReader = new Scanner(new File(FILE));
             while(fileReader.hasNextLine()) {
                 String line = fileReader.nextLine();
                 if (!line.equalsIgnoreCase("Earning Categories:")) 
@@ -1386,7 +1396,7 @@ public class backend {
         }
 
         try {
-            BufferedWriter fileWriter = new BufferedWriter(new FileWriter(FILEPATH+FILE));
+            BufferedWriter fileWriter = new BufferedWriter(new FileWriter(FILE));
             for(int i =0; i < copy.size(); i++) {
                 fileWriter.write(copy.get(i) + "\n");
             }
@@ -1460,7 +1470,7 @@ public class backend {
         spendings.addCategory(aCategory);
         ArrayList<String> copy = new ArrayList<String>();
         try { //Read in file
-            Scanner fileReader = new Scanner(new File(FILEPATH+FILE));
+            Scanner fileReader = new Scanner(new File(FILE));
             while (fileReader.hasNextLine()) {
                 String line = fileReader.nextLine();
                 if (line.equalsIgnoreCase("Spending Categories:")) {
@@ -1482,7 +1492,7 @@ public class backend {
         }
 
         try { //Write to file
-            BufferedWriter fileWriter = new BufferedWriter( new FileWriter(FILEPATH+FILE));
+            BufferedWriter fileWriter = new BufferedWriter( new FileWriter(FILE));
             for(int i =0; i < copy.size(); i++) {
                 fileWriter.write(copy.get(i) + "\n");
             }
@@ -1496,7 +1506,7 @@ public class backend {
         ArrayList<String> copy = new ArrayList<String>();
         earnings.addCategory(aCategory);
         try { //Read in file
-            Scanner fileReader = new Scanner(new File(FILEPATH+FILE));
+            Scanner fileReader = new Scanner(new File(FILE));
             while (fileReader.hasNextLine()) {
                 String line = fileReader.nextLine();
                 if (line.equalsIgnoreCase("Earning Categories:")) {
@@ -1518,7 +1528,7 @@ public class backend {
         }
 
         try { //Write to file
-            BufferedWriter fileWriter = new BufferedWriter( new FileWriter(FILEPATH+FILE));
+            BufferedWriter fileWriter = new BufferedWriter( new FileWriter(FILE));
             for(int i =0; i < copy.size(); i++) {
                 fileWriter.write(copy.get(i) + "\n");
             }
